@@ -1,0 +1,51 @@
+form {
+    padding-top: 15px;
+
+    label {
+        visibility: hidden;
+    }
+
+    input {
+        padding: 5px;
+        height: 20px;
+        outline: transparent;
+        border-radius: 3px;
+        border: 1px solid transparent;
+        width: 700px;
+
+        &:focus {
+            border: 1px solid orangered;
+            outline: transparent;
+        }
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            display: flex;
+            border-top: 1px solid orangered;
+            border-right: 1px solid orangered;
+            border-left: 1px solid orangered;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        li:last-child {
+            border-bottom: 1px solid orangered;
+        }
+    }
+
+    .dropdown {
+        background: orangered;
+    }
+
+    .hidden {
+        opacity: 0;
+        transition: 2s;
+    }
+    .notHidden {
+        opacity: 1;
+        transition: 2s;
+    }
+}

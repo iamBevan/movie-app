@@ -10,10 +10,12 @@
     "@types/node": "^13.9.2",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "axios": "^0.19.2",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
+    "react-use": "^13.27.0",
     "typescript": "~3.8.3"
   },
   "scripts": {
