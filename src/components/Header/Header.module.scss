@@ -1,7 +1,12 @@
 .header {
     height: 60px;
-    background-color: #323232;
+    background-color: #0b0e0f;
 
     display: flex;
     justify-content: center;
+
+    .name {
+        color: white;
+        font-weight: 800;
+    }
 }

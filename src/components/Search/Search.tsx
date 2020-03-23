@@ -2,38 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 import styles from './Search.module.scss'
 import { useDebounce } from 'react-use'
-
-interface Results {
-    adult: boolean
-    backdrop_path: string
-    genreIds: number[]
-    id: number
-    original_language: string
-    original_title: string
-    overview: string
-    popularity: number
-    poster_path: string
-    release_date: string
-    title: string
-    video: boolean
-    vote_average: number
-    vote_count: number
-}
-
-interface Movies {
-    page: number
-    results: Results[]
-    total_pages: number
-    total_results: number
-}
+import { Movies, Results } from './interfaces'
+import searchPic from './search.svg'
+import { useMovie } from '../../hooks/useMovie'
 
 const Search = () => {
-    const [movies, setMovies] = useState({})
+    const [movies, setMovies] = useState(null)
     const [input, setInput] = useState('')
     const [search, setSearch] = useState('')
+    const [state] = useMovie(movies)
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [, cancel] = useDebounce(
+    // eslint-disable-next-line no-empty-pattern
+    const [] = useDebounce(
         () => {
             setSearch(input)
         },
@@ -47,11 +27,14 @@ const Search = () => {
         )
             .then(res => {
                 setMovies(res.data)
+                console.log('Res data: ', res.data)
             })
-            .catch(() => console.log('Error'))
+            .catch(() => {
+                console.log('Error')
+            })
 
         const cleanup = () => {
-            setMovies({})
+            setMovies(null)
         }
 
         return cleanup
@@ -62,54 +45,64 @@ const Search = () => {
         setInput(event.target.value)
     }
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
         event.preventDefault()
         //Route to search results
     }
 
-    const dropDownList = (movies: Movies | {}) => {
+    const dropDownList = (movies: Movies | null) => {
         let resultsArr = []
-
-        if (Object.keys(movies).length > 0) {
-            for (let i: number = 0; i < 7; i++) {
-                let entry = Object.values(movies)[3]
-                resultsArr.push(entry[i])
+        if (movies !== null) {
+            if (Object.keys(movies).length > 0) {
+                for (let i: number = 0; i < 7; i++) {
+                    let entry = Object.values(movies)[3]
+                    resultsArr.push(entry[i])
+                }
             }
-        }
 
-        return resultsArr.map((el: Results, key) => {
-            return (
-                <li key={key}>
-                    <div>{el.title}</div>
-                </li>
-            )
-        })
+            return resultsArr.map((el: Results, key) => {
+                return (
+                    <li key={key}>
+                        <img
+                            src={
+                                el.poster_path
+                                    ? `https://image.tmdb.org/t/p/w185${el.poster_path}`
+                                    : `https://via.placeholder.com/50x75`
+                            }
+                            alt="poster"
+                        />
+                        <div className={styles.info}>
+                            <div className={styles.title}>{el.title}</div>
+                        </div>
+                    </li>
+                )
+            })
+        }
     }
 
     return (
-        <form className={styles.form} onSubmit={onSubmit}>
-            {movies && console.log(movies)}
-            <label htmlFor="search">Search</label>
-            <input
-                type="text"
-                value={input}
-                id="search"
-                onChange={onChange}
-                autoComplete="off"
-            />
-            <button className={styles.button} type="submit">
-                Search
-            </button>
-            {
-                <ul
-                    className={
-                        search.length > 1 ? styles.nonHidden : styles.nonHidden
-                    }
+        <form className={styles.form}>
+            {console.log('state: ', state)}
+            <div className={styles.search}>
+                <input
+                    type="text"
+                    value={input}
+                    id="search"
+                    onChange={onChange}
+                    autoComplete="off"
+                    className={styles.input}
+                />
+                <button
+                    className={styles.button}
+                    type="submit"
+                    onClick={onSubmit}
                 >
-                    {' '}
-                    {dropDownList(movies ? movies : {})}
-                </ul>
-            }
+                    <img src={searchPic} alt="search" />
+                </button>
+            </div>
+            {<ul>{dropDownList(movies)}</ul>}
         </form>
     )
 }

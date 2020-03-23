@@ -1,51 +1,147 @@
-form {
-    padding-top: 15px;
+.form {
+    margin-top: 15px;
+    height: 60px;
+    width: 700px;
 
-    label {
-        visibility: hidden;
-    }
+    // background-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
 
-    input {
-        padding: 5px;
-        height: 20px;
-        outline: transparent;
+    .search {
+        // margin-top: 14px;
+        display: flex;
+        // align-items: center;
+        // justify-content: center;
         border-radius: 3px;
-        border: 1px solid transparent;
-        width: 700px;
+        flex: 1;
 
-        &:focus {
-            border: 1px solid orangered;
+        .input {
+            flex: 1;
+            // background-color: indigo;
+            padding: 5px 40px 5px 5px;
+            height: 20px;
             outline: transparent;
+            border-radius: 3px;
+            border: 1px solid #fff;
+            // width: 653px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+
+            &:focus {
+                border: 1px solid #55d5ff;
+                outline: transparent;
+            }
         }
+
+        .button {
+            // transform: translateX(-20px);
+            margin-top: 6px;
+            margin-left: -32px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            // padding: 7px 32px;
+            height: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+
+            // transform: translateX(-40px);
+        }
+
+        label {
+            display: none;
+        }
+
+        // input {
+        //     flex: 1;
+
+        //     padding: 5px 40px 5px 5px;
+        //     height: 20px;
+        //     outline: transparent;
+        //     border-radius: 3px;
+        //     border: 1px solid #fff;
+        //     width: 653px;
+        //     font-size: 16px;
+        //     display: flex;
+        //     align-items: center;
+
+        //     &:focus {
+        //         border: 1px solid #55d5ff;
+        //         outline: transparent;
+        //     }
+        // }
+
+        // button {
+        //     margin-left: -40px;
+
+        //     background-color: transparent;
+        //     border: none;
+        //     color: white;
+        //     // padding: 7px 32px;
+        //     height: 20px;
+        //     text-align: center;
+        //     text-decoration: none;
+        //     display: inline-block;
+        //     font-size: 16px;
+        //     display: flex;
+        //     align-items: center;
+
+        //     // transform: translateX(-40px);
+        // }
     }
 
     ul {
         list-style: none;
+        margin: 0;
+        padding: 0;
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        // background-color: green;
+        // min-height: 673px;
 
         li {
             display: flex;
-            border-top: 1px solid orangered;
-            border-right: 1px solid orangered;
-            border-left: 1px solid orangered;
+            border-top: 1px solid #111314;
+            border-right: 1px solid #111314;
+            border-left: 1px solid #111314;
             padding: 10px;
-            background-color: #fff;
+            background-color: #0b0e0f;
+
+            &:hover {
+                background-color: #262829;
+            }
+
+            img {
+                width: 50px;
+                height: 100%;
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                padding-left: 30px;
+                .title {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        li:first-child {
+            border-radius: 3px 3px 0 0;
         }
 
         li:last-child {
-            border-bottom: 1px solid orangered;
+            border-bottom: 1px solid #111314;
+            border-radius: 0 0 3px 3px;
         }
-    }
-
-    .dropdown {
-        background: orangered;
-    }
-
-    .hidden {
-        opacity: 0;
-        transition: 2s;
-    }
-    .notHidden {
-        opacity: 1;
-        transition: 2s;
     }
 }
