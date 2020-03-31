@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { useState, useEffect, useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import { Movies } from '../components/Search/interfaces'
 
 interface Data {
@@ -24,7 +24,7 @@ interface Crew {}
 const useMovie = (props: Movies | null) => {
     const results = props?.results
 
-    const reducer = (state: any, action: any) => {
+    const reducer = (state: Cast[], action: any) => {
         switch (action.type) {
             case 'add': {
                 return [...state, action.fetch]
