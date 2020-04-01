@@ -1,24 +1,38 @@
 import React from 'react'
 import styles from './Trending.module.scss'
 import { useTrending } from '../../hooks/useTrending'
-import { MovieCard, Movie } from '../MovieCard/MovieCard'
+import { MovieCard } from '../MovieCard/MovieCard'
+import { Movie } from '../MovieCard/interfaces'
+import { Results } from '../Search/interfaces'
 
 const Trending: React.FC = () => {
     const trending = useTrending()
 
-    const handleMovies = () => {
-        return trending?.results.map((el: Movie) => {
-            return (
-                <MovieCard
-                    title={el.title}
-                    poster_path={el.poster_path}
-                    release_date={el.release_date}
-                />
-            )
-        })
+    const createTrendingList = () => {
+        const trendingList: Movie[] = []
+        if (trending?.results !== undefined) {
+            for (let i: number = 0; i < 8; i++) {
+                trendingList.push(trending?.results[i])
+            }
+        }
+        return trendingList
     }
 
-    return <div className={styles['trending']}>{handleMovies()}</div>
+    return (
+        <div className={styles['trending']}>
+            <h1>Trending</h1>
+            <div className={styles['grid']}>
+                {createTrendingList().map((el: Movie) => (
+                    <MovieCard
+                        title={el.title}
+                        poster_path={el.poster_path}
+                        release_date={el.release_date}
+                    />
+                ))}
+                {console.log('trending: ', trending)}
+            </div>
+        </div>
+    )
 }
 
 export { Trending }

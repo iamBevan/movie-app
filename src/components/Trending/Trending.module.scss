@@ -1,9 +1,31 @@
 .trending {
-    margin: auto;
-    max-width: 1140px;
-    height: 100%;
-    background-color: lightblue;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    width: 1200px;
+    margin: 0 auto;
+
+    h1 {
+        color: #fff;
+        font-weight: 300;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-row-gap: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .trending {
+        width: 900px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .trending {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .trending {
+        width: 599px;
+    }
 }
