@@ -85,7 +85,7 @@ const Search = () => {
                     <input
                         id="search"
                         type="text"
-                        placeholder="Type Keywords"
+                        placeholder="Search..."
                         value={input}
                         onChange={onChange}
                         autoComplete="off"
