@@ -1,19 +1,19 @@
 import React, { useState, useEffect, FormEvent, useRef } from 'react'
-import Axios from 'axios'
 import styles from './Search.module.scss'
 import { useDebounce } from 'react-use'
 import { Movies, Results } from './interfaces'
-import { useMovie } from '../../hooks/useMovie'
+import { useMovie } from '../../hooks/Movies/useMovieCredits'
 import { useClickAway } from 'react-use'
 import searchPic from './search.svg'
+import { useSearch } from '../../hooks/Search/useSearch'
 
 const Search = () => {
     const ref = useRef(null)
-    const [movies, setMovies] = useState(null)
     const [input, setInput] = useState('')
     const [search, setSearch] = useState('')
-    const [state] = useMovie(movies)
     const [isOpen, setIsOpen] = useState(false)
+    const moviesResults = useSearch(search)
+    const [state] = useMovie(moviesResults)
 
     useClickAway(ref, () => {
         console.log('OUTSIDE CLICKED')
@@ -30,25 +30,6 @@ const Search = () => {
         [input]
     )
 
-    useEffect(() => {
-        Axios.get(
-            `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${search}`
-        )
-            .then((res) => {
-                setMovies(res.data)
-                console.log('Res data: ', res.data)
-            })
-            .catch(() => {
-                console.log('Error')
-            })
-
-        const cleanup = () => {
-            setMovies(null)
-        }
-
-        return cleanup
-    }, [search])
-
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
         setInput(event.target.value)
@@ -60,9 +41,9 @@ const Search = () => {
         //Route to search results
     }
 
-    const dropDownList = (movies: Movies | null) => {
+    const dropDownList = (movies: Movies | undefined) => {
         let resultsArr = []
-        if (movies !== null) {
+        if (movies !== undefined) {
             if (Object.keys(movies).length > 0) {
                 for (let i: number = 0; i < 7; i++) {
                     let entry = Object.values(movies)[3]
@@ -88,6 +69,7 @@ const Search = () => {
                                 {state[key] && state[key].cast[1]?.name}
                                 {console.log(el)}
                             </div>
+                            {console.log('results: ', moviesResults)}
                         </div>
                     </li>
                 )
@@ -113,7 +95,7 @@ const Search = () => {
                     </div>
                 </div>
             </div>
-            <ul ref={ref}>{isOpen && dropDownList(movies)}</ul>
+            <ul ref={ref}>{isOpen && dropDownList(moviesResults)}</ul>
         </form>
     )
 }

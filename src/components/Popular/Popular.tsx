@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Popular.module.scss'
 import { MovieCard } from '../MovieCard/MovieCard'
-import { usePopular } from '../../hooks/usePopular'
+import { usePopular } from '../../hooks/People/usePopular'
 import { PopularResults, Popular } from '../../hooks/interfaces'
 import { ProfileCard } from '../ProfileCard/ProfileCard'
 

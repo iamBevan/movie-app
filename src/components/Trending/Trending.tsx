@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Trending.module.scss'
-import { useTrending } from '../../hooks/useTrending'
+import { useTrending } from '../../hooks/Trending/useTrending'
 import { MovieCard } from '../MovieCard/MovieCard'
 import { Movie } from '../MovieCard/interfaces'
 

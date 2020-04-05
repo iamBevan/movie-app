@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Popular } from './interfaces'
+import { Popular } from '../interfaces'
 
 const usePopular = () => {
     const [state, setState] = useState<Popular>()
