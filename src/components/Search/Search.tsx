@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent, useRef } from 'react'
+import React, { useState, FormEvent, useRef } from 'react'
 import styles from './Search.module.scss'
 import { useDebounce } from 'react-use'
 import { Movies, Results } from './interfaces'
