@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useRef } from 'react'
 import styles from './Search.module.scss'
 import { useDebounce } from 'react-use'
-import { Movies, Results } from './interfaces'
+import { Movies, Results } from '../../hooks/Search/interfaces'
 import { useMovie } from '../../hooks/Movies/useMovieCredits'
 import { useClickAway } from 'react-use'
 import searchPic from './search.svg'

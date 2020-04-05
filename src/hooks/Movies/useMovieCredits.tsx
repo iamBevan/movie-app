@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import { useEffect, useReducer } from 'react'
-import { Movies } from '../../components/Search/interfaces'
+import { Movies } from '../Search/interfaces'
 import { Cast } from '.././interfaces'
 
 const useMovie = (props: Movies | undefined) => {

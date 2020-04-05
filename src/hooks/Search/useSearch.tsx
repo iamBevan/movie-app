@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Movies } from '../../components/Search/interfaces'
+import { Movies } from './interfaces'
 
 const useSearch = (query: string) => {
     const [moviesResults, setMoviesResults] = useState<Movies>()
