@@ -3,7 +3,6 @@ import styles from './Trending.module.scss'
 import { useTrending } from '../../hooks/useTrending'
 import { MovieCard } from '../MovieCard/MovieCard'
 import { Movie } from '../MovieCard/interfaces'
-import { Results } from '../Search/interfaces'
 
 const Trending: React.FC = () => {
     const trending = useTrending()
@@ -22,14 +21,15 @@ const Trending: React.FC = () => {
         <div className={styles['trending']}>
             <h1>Trending</h1>
             <div className={styles['grid']}>
-                {createTrendingList().map((el: Movie) => (
+                {createTrendingList().map((movie: Movie) => (
                     <MovieCard
-                        title={el.title}
-                        poster_path={el.poster_path}
-                        release_date={el.release_date}
+                        title={movie.title}
+                        poster_path={movie.poster_path}
+                        release_date={movie.release_date}
+                        key={movie.id}
+                        original_title={movie.original_title}
                     />
                 ))}
-                {console.log('trending: ', trending)}
             </div>
         </div>
     )

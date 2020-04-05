@@ -34,7 +34,7 @@ const Search = () => {
         Axios.get(
             `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${search}`
         )
-            .then(res => {
+            .then((res) => {
                 setMovies(res.data)
                 console.log('Res data: ', res.data)
             })
@@ -73,7 +73,6 @@ const Search = () => {
             return resultsArr.map((el: Results, key) => {
                 return (
                     <li key={key}>
-                        {console.log(key)}
                         <img
                             src={
                                 el?.poster_path !== null

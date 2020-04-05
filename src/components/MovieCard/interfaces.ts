@@ -8,7 +8,9 @@ export interface Movie {
     backdrop_path?: string
     adult?: boolean
     overview?: string
-    poster_path?: string
+    poster_path?: string | null
     popularity?: number
     media_type?: string
+    original_title?: string
+    name?: string
 }

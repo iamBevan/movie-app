@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './MovieCard.module.scss'
 import { Movie } from './interfaces'
 
-const MovieCard: React.FC<Movie> = props => {
+const MovieCard: React.FC<Movie> = (props) => {
     return (
         <div className={styles['movie-card']}>
             <div className={styles['front']}>
@@ -17,7 +17,8 @@ const MovieCard: React.FC<Movie> = props => {
                 />
             </div>
             <div className={styles['back']}>
-                <h2>{props.title}</h2>
+                <h2>{props.title ? props.title : props.original_title}</h2>
+                {console.log('title or orig: ', props.name)}
                 <p>{props.release_date}</p>
             </div>
         </div>
