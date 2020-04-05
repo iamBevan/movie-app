@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './ProfileCard.module.scss'
 import { PopularResults } from '../../hooks/interfaces'
-// import { ProfileCard } from './interfaces'
 
 const ProfileCard: React.FC<PopularResults> = (props) => {
     return (
