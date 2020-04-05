@@ -28,6 +28,7 @@ const Trending: React.FC = () => {
                         release_date={movie.release_date}
                         key={movie.id}
                         original_title={movie.original_title}
+                        id={movie.id}
                     />
                 ))}
             </div>

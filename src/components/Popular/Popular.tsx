@@ -32,7 +32,6 @@ const PopularList = () => {
                         popularity={el.popularity}
                     />
                 ))}
-                {console.log(createPopularList()[0]?.known_for)}
             </div>
         </div>
     )

@@ -10,6 +10,8 @@
 
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html {
@@ -79,7 +81,25 @@ pre {
    */
 
 a {
-    background-color: transparent;
+    text-decoration: none;
+    &:link {
+        color: #fff;
+    }
+
+    /* visited link */
+    &:visited {
+        color: #fff;
+    }
+
+    /* mouse over link */
+    &:hover {
+        color: #fff;
+    }
+
+    /* selected link */
+    &:active {
+        color: #fff;
+    }
 }
 
 /**

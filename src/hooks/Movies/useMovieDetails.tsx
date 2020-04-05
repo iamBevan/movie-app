@@ -2,7 +2,7 @@ import Axios from 'axios'
 import { useEffect, useState } from 'react'
 import { MovieDetails } from './interfaces'
 
-const useMovieDetails = (query: string) => {
+const useMovieDetails = (query: number) => {
     const [state, setState] = useState<MovieDetails>()
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const useMovieDetails = (query: string) => {
         return cleanup
     }, [query])
 
-    return [state]
+    return state
 }
 
 export { useMovieDetails }

@@ -6,6 +6,7 @@ import { useMovie } from '../../hooks/Movies/useMovieCredits'
 import { useClickAway } from 'react-use'
 import searchPic from './search.svg'
 import { useSearch } from '../../hooks/Search/useSearch'
+import { Link } from 'react-router-dom'
 
 const Search = () => {
     const ref = useRef(null)
@@ -53,25 +54,25 @@ const Search = () => {
 
             return resultsArr.map((el: Results, key) => {
                 return (
-                    <li key={key}>
-                        <img
-                            src={
-                                el?.poster_path !== null
-                                    ? `https://image.tmdb.org/t/p/w185${el?.poster_path}`
-                                    : `https://via.placeholder.com/50x75`
-                            }
-                            alt="poster"
-                        />
-                        <div className={styles.info}>
-                            <div className={styles.title}>{el?.title}</div>
-                            <div className={styles.cast}>
-                                {state[key] && state[key].cast[0]?.name},{' '}
-                                {state[key] && state[key].cast[1]?.name}
-                                {console.log(el)}
+                    <Link to={`/movie/${el.id?.toString()}`}>
+                        <li key={key}>
+                            <img
+                                src={
+                                    el?.poster_path !== null
+                                        ? `https://image.tmdb.org/t/p/w185${el?.poster_path}`
+                                        : `https://via.placeholder.com/50x75`
+                                }
+                                alt="poster"
+                            />
+                            <div className={styles.info}>
+                                <div className={styles.title}>{el?.title}</div>
+                                <div className={styles.cast}>
+                                    {state[key] && state[key].cast[0]?.name},{' '}
+                                    {state[key] && state[key].cast[1]?.name}
+                                </div>
                             </div>
-                            {console.log('results: ', moviesResults)}
-                        </div>
-                    </li>
+                        </li>
+                    </Link>
                 )
             })
         }
