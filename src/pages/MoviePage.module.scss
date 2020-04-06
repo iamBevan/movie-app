@@ -1,24 +1,7 @@
 .movie {
     height: 100vh;
     background: #fff;
-
-    .header {
-        height: 550px;
-        display: block;
-        position: relative;
-
-        &::after {
-            content: '';
-            background-color: black;
-            opacity: 0.9;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            position: absolute;
-            z-index: 10;
-        }
-    }
+    color: #fff;
 
     section {
         text-align: center;
@@ -29,6 +12,50 @@
         h1 {
             padding: 0;
             margin: 0;
+        }
+    }
+
+    .header {
+        height: 550px;
+        display: block;
+        position: relative;
+        padding: 50px 0;
+
+        &::after {
+            content: '';
+            background-color: black;
+            opacity: 0.9;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+        }
+
+        .overview {
+            margin: auto;
+            width: 960px;
+            background: transparent;
+            height: 450px;
+            z-index: 2;
+            position: relative;
+            display: flex;
+
+            .details {
+                padding-left: 50px;
+
+                h1 {
+                    padding: 0;
+                    margin: 0;
+                    font-size: 40px;
+
+                    span {
+                        font-weight: 200;
+                        margin-left: 15px;
+                        font-size: 20px;
+                    }
+                }
+            }
         }
     }
 }
