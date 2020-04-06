@@ -1,5 +1,5 @@
 form {
-    width: 780px;
+    width: 960px;
     z-index: 10;
 
     .basicSearch {
@@ -16,36 +16,12 @@ form {
                 outline: transparent;
                 border-radius: 3px;
                 border: 1px solid #fff;
-                width: 657px;
+                width: 100%;
 
                 &:focus {
                     // border: 1px solid #55d5ff;
                     border: 1px solid orangered;
                     outline: transparent;
-                }
-            }
-
-            .iconWrap {
-                margin-top: 5px;
-                // background-color: teal;
-                position: absolute;
-                top: 0;
-                right: 0;
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-align: center;
-                align-items: center;
-                width: 40px;
-                height: 100%;
-
-                svg {
-                    width: 28px;
-                    height: 28px;
-                    fill: #0b0e0f;
-
-                    &:hover {
-                        fill: orangered;
-                    }
                 }
             }
         }

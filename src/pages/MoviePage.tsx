@@ -39,7 +39,16 @@ const MoviePage: React.FC<MoviePageProps> = (props) => {
                 </div>
             </div>
             <section>
-                <h1>{movie?.title}</h1>
+                <h2>Cast</h2>
+            </section>
+            <section>
+                <h2>Social</h2>
+            </section>
+            <section>
+                <h2>Media</h2>
+            </section>
+            <section>
+                <h2>Recommendations</h2>
             </section>
             >
         </div>

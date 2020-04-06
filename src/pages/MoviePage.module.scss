@@ -34,12 +34,13 @@
 
         .overview {
             margin: auto;
-            width: 960px;
+            width: 1300px;
             background: transparent;
             height: 450px;
             z-index: 2;
             position: relative;
             display: flex;
+            padding: 30px 40px;
 
             .details {
                 padding-left: 50px;

@@ -91,9 +91,6 @@ const Search = () => {
                         autoComplete="off"
                         onFocus={() => setIsOpen(true)}
                     />
-                    <div className={styles.iconWrap}>
-                        <img src={searchPic} alt="" />
-                    </div>
                 </div>
             </div>
             <ul ref={ref}>{isOpen && dropDownList(moviesResults)}</ul>
