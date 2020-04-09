@@ -7,9 +7,9 @@ const ProfileCard: React.FC<PopularResults> = (props) => {
         <div className={styles['profile-card']}>
             <div
                 style={{
-                    borderRadius: '50%',
+                    // borderRadius: '50%',
                     overflow: 'hidden',
-                    height: '185px',
+                    height: '100%',
                     width: '185px',
                 }}
             >

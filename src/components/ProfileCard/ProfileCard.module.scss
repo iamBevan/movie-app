@@ -1,19 +1,24 @@
+@import '../../sass/variables';
+
 .profile-card {
     margin: auto;
     text-align: center;
-    color: #fff;
 
     h1 {
         margin-top: 30px;
-        font-weight: 400;
+        font-weight: 600;
         font-size: 16px;
+        color: $primary-black;
     }
     p {
-        font-size: 14;
+        font-size: 14px;
         font-style: italic;
-        color: rgb(212, 212, 212);
+        color: $primary-black-3;
+
         span {
-            // color: gray;
+            margin-left: 5px;
+            font-size: 16px;
+            font-weight: 600;
         }
     }
 }
