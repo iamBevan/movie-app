@@ -20,7 +20,7 @@
 		"react-icons": "^3.11.0",
 		"react-router": "^5.2.0",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "3.4.0",
+		"react-scripts": "^3.4.3",
 		"react-use": "^13.27.1",
 		"source-map-explorer": "^2.5.0",
 		"typescript": "~3.8.3"
