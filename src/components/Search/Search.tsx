@@ -51,11 +51,11 @@ const Search = () => {
 
 			return resultsArr.map((el: Results, key) => {
 				return (
-					<Link to={`/movie/${el.id?.toString()}`}>
+					<Link to={`/movie/${el && el.id?.toString()}`}>
 						<li key={key}>
 							<img
 								src={
-									el?.poster_path !== null
+									el?.poster_path
 										? `https://image.tmdb.org/t/p/w185${el?.poster_path}`
 										: `https://via.placeholder.com/50x75`
 								}

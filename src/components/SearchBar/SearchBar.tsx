@@ -30,17 +30,18 @@ const SearchBar: React.FC<Props> = ({
 	return (
 		<form onSubmit={onSubmit}>
 			<div className={styles.basicSearch}>
-				<div className={styles.inputField}></div>
-				<input
-					className={styles.input}
-					id='search'
-					type='text'
-					placeholder='Search...'
-					value={input}
-					onChange={onChange}
-					autoComplete='off'
-					onFocus={onFocus}
-				/>
+				<div className={styles.inputField}>
+					<input
+						className={styles.input}
+						id='search'
+						type='text'
+						placeholder='Search...'
+						value={input}
+						onChange={onChange}
+						autoComplete='off'
+						onFocus={onFocus}
+					/>
+				</div>
 			</div>
 			<ul ref={ref}>{isOpen && dropDownList}</ul>
 		</form>

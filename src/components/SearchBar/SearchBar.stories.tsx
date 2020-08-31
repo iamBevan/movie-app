@@ -22,7 +22,6 @@ export const Basic = () => (
 			onSubmit={action("submit")}
 			toggle={action("toggle")}
 		/>
-		Dog
 	</div>
 )
 
@@ -45,4 +44,10 @@ export default {
 	title: "SearchBar",
 	component: SearchBar,
 	decorators: [withA11y],
+	parameters: {
+		backgrounds: [
+			{ name: "default", value: "#011627", default: true },
+			{ name: "white", value: "#fff" },
+		],
+	},
 }
