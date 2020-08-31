@@ -3,26 +3,26 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@storybook/addon-a11y": "^5.3.19",
-		"@storybook/addon-backgrounds": "^5.3.19",
-		"@testing-library/jest-dom": "^5.1.1",
-		"@testing-library/react": "^10.0.1",
-		"@testing-library/user-event": "^10.0.0",
-		"@types/jest": "^25.1.4",
-		"@types/node": "^13.9.2",
-		"@types/react": "^16.9.0",
-		"@types/react-dom": "^16.9.0",
-		"@types/react-router-dom": "^5.1.3",
+		"@storybook/addon-a11y": "^5.3.21",
+		"@storybook/addon-backgrounds": "^5.3.21",
+		"@testing-library/jest-dom": "^5.11.4",
+		"@testing-library/react": "^10.4.9",
+		"@testing-library/user-event": "^10.4.1",
+		"@types/jest": "^25.2.3",
+		"@types/node": "^13.13.15",
+		"@types/react": "^16.9.48",
+		"@types/react-dom": "^16.9.8",
+		"@types/react-router-dom": "^5.1.5",
 		"axios": "^0.19.2",
 		"node-sass": "^4.14.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.0",
-		"react-icons": "^3.9.0",
-		"react-router": "^5.1.2",
-		"react-router-dom": "^5.1.2",
+		"react-icons": "^3.11.0",
+		"react-router": "^5.2.0",
+		"react-router-dom": "^5.2.0",
 		"react-scripts": "3.4.0",
-		"react-use": "^13.27.0",
-		"source-map-explorer": "^2.4.2",
+		"react-use": "^13.27.1",
+		"source-map-explorer": "^2.5.0",
 		"typescript": "~3.8.3"
 	},
 	"scripts": {
@@ -35,8 +35,13 @@
 		"build-storybook": "build-storybook -s public"
 	},
 	"eslintConfig": {
-		"plugins": ["jsx-a11y"],
-		"extends": ["react-app", "plugin:jsx-a11y/recommended"]
+		"plugins": [
+			"jsx-a11y"
+		],
+		"extends": [
+			"react-app",
+			"plugin:jsx-a11y/recommended"
+		]
 	},
 	"browserslist": {
 		"production": [
@@ -51,14 +56,14 @@
 		]
 	},
 	"devDependencies": {
-		"@storybook/addon-actions": "^5.3.17",
-		"@storybook/addon-links": "^5.3.17",
-		"@storybook/addons": "^5.3.19",
+		"@storybook/addon-actions": "^5.3.21",
+		"@storybook/addon-links": "^5.3.21",
+		"@storybook/addons": "^5.3.21",
 		"@storybook/preset-create-react-app": "^2.1.2",
-		"@storybook/react": "^5.3.17",
-		"@storybook/theming": "^5.3.19",
+		"@storybook/react": "^5.3.21",
+		"@storybook/theming": "^5.3.21",
 		"@types/react-axe": "^3.1.0",
 		"react-axe": "^3.5.3",
-		"typescript-plugin-css-modules": "^2.2.0"
+		"typescript-plugin-css-modules": "^2.4.0"
 	}
 }
