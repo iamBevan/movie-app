@@ -32,6 +32,7 @@ const SearchBar: React.FC<Props> = ({
 			<div className={styles.basicSearch}>
 				<div className={styles.inputField}>
 					<input
+						autoFocus
 						className={styles.input}
 						id='search'
 						type='text'

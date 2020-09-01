@@ -1,9 +1,9 @@
 @import "./variables";
 @import "./normalise";
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Merriweather|Muli:300");
 
 body {
-	font-family: "Montserrat";
+	font-family: "Merriweather", Serif;
 	background-color: rgb(7, 7, 7);
 	box-sizing: border-box;
 	color: $primary-black;

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom"
 const MovieCard: React.FC<Movie> = props => {
 	return (
 		<>
-			{console.log("props", props)}
 			<Link to={`/movie/${props.id?.toString()}`}>
 				<div className={styles["movie-card"]}>
 					<div className={styles["front"]}>
@@ -21,21 +20,36 @@ const MovieCard: React.FC<Movie> = props => {
 						/>
 					</div>
 					<div className={styles["back"]}>
-						<img
-							style={{ width: "100%" }}
-							src={
-								props.backdrop_path
-									? `https://image.tmdb.org/t/p/w500${props.backdrop_path}`
-									: `https://via.placeholder.com/500x750`
-							}
-							alt={
-								props.title ? props.title : props.original_title
-							}
-						/>
-						<h2>
-							{props.title ? props.title : props.original_title}
-						</h2>
-						<p>{props.release_date}</p>
+						<div className={styles.elements}>
+							<div className={styles.img}>
+								<img
+									style={{ width: "100%" }}
+									src={
+										props.backdrop_path
+											? `https://image.tmdb.org/t/p/w500${props.backdrop_path}`
+											: `https://via.placeholder.com/500x750`
+									}
+									alt={
+										props.title
+											? props.title
+											: props.original_title
+									}
+								/>
+							</div>
+							<div className={styles.info}>
+								<h2>
+									{props.title
+										? props.title
+										: props.original_title}
+								</h2>
+								<p>{props.release_date}</p>
+								<div className={styles.ratings}>Ratings</div>
+								<div className={styles.media}>
+									<div className={styles.tv}>TV</div>
+									<div className={styles.movie}>Movie</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</Link>
