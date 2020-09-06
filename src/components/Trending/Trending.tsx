@@ -17,6 +17,8 @@ const Trending: React.FC = () => {
 		return trendingList
 	}
 
+	console.log(trending)
+
 	return (
 		<div className={styles["trending"]}>
 			<h1>Trending</h1>
@@ -27,11 +29,15 @@ const Trending: React.FC = () => {
 						<MovieCard
 							title={movie.title}
 							poster_path={movie.poster_path}
-							release_date={movie.release_date}
+							release_date={
+								movie.release_date ?? movie.first_air_date
+							}
 							key={movie.id}
-							original_title={movie.original_title}
+							original_title={movie.original_title ?? movie.name}
 							id={movie.id}
 							backdrop_path={movie.backdrop_path}
+							genre_ids={movie.genre_ids}
+							media_type={movie.media_type}
 						/>
 					</>
 				))}

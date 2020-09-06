@@ -1,14 +1,14 @@
 import React from "react"
-import { useMovieDetails } from "../../hooks/Movies/useMovieDetails"
-import styles from "./MoviePage.module.scss"
+import { useTVDetails } from "../../hooks/TVShows/useTVDetails"
+import styles from "./TVPage.module.scss"
 import { RouteComponentProps } from "react-router-dom"
 import { useMovieReleaseDates } from "../../hooks/Movies/useMovieReleaseDates"
 import { FaListUl, FaHeart, FaBookmark, FaStar } from "react-icons/fa"
 
 export interface OverviewProps extends RouteComponentProps<{ id: string }> {}
 
-const MoviePage: React.FC<OverviewProps> = props => {
-	const movie = useMovieDetails(parseInt(props.match.params.id, 10))
+const TVPage: React.FC<OverviewProps> = props => {
+	const movie = useTVDetails(parseInt(props.match.params.id, 10))
 	const movieCert = useMovieReleaseDates(parseInt(props.match.params.id, 10))
 
 	const handleDate = (date: string | undefined) => {
@@ -107,4 +107,4 @@ const MoviePage: React.FC<OverviewProps> = props => {
 	)
 }
 
-export { MoviePage }
+export { TVPage }

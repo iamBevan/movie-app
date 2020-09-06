@@ -2,11 +2,18 @@ import React from "react"
 import styles from "./MovieCard.module.scss"
 import { Movie } from "./interfaces"
 import { Link } from "react-router-dom"
+import { RatingCircle } from "../RatingCircle/RatingCircle"
+import { useGenres } from "../../helpers/movieGenres"
 
 const MovieCard: React.FC<Movie> = props => {
+	useGenres(props.genre_ids)
 	return (
 		<>
-			<Link to={`/movie/${props.id?.toString()}`}>
+			<Link
+				to={`/${
+					props.media_type === "tv" ? "tv" : "movie"
+				}/${props.id?.toString()}`}
+			>
 				<div className={styles["movie-card"]}>
 					<div className={styles["front"]}>
 						<img
@@ -43,7 +50,9 @@ const MovieCard: React.FC<Movie> = props => {
 										: props.original_title}
 								</h2>
 								<p>{props.release_date}</p>
-								<div className={styles.ratings}>Ratings</div>
+								<div className={styles.ratings}>
+									{useGenres(props.genre_ids)}
+								</div>
 								<div className={styles.media}>
 									<div className={styles.tv}>TV</div>
 									<div className={styles.movie}>Movie</div>

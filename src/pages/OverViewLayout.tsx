@@ -1,15 +1,15 @@
 import React from "react"
-import { useMovieDetails } from "../../hooks/Movies/useMovieDetails"
-import styles from "./MoviePage.module.scss"
+// import { useTVDetails } from "../../hooks/TVShows/useTVDetails"
+import styles from "./Overview.module.scss"
 import { RouteComponentProps } from "react-router-dom"
-import { useMovieReleaseDates } from "../../hooks/Movies/useMovieReleaseDates"
+// import { useMovieReleaseDates } from "../../hooks/Movies/useMovieReleaseDates"
 import { FaListUl, FaHeart, FaBookmark, FaStar } from "react-icons/fa"
 
 export interface OverviewProps extends RouteComponentProps<{ id: string }> {}
 
-const MoviePage: React.FC<OverviewProps> = props => {
-	const movie = useMovieDetails(parseInt(props.match.params.id, 10))
-	const movieCert = useMovieReleaseDates(parseInt(props.match.params.id, 10))
+const Overview: React.FC<OverviewProps> = props => {
+	// const movie = useMovieDetails(parseInt(props.match.params.id, 10))
+	// const movieCert = useMovieReleaseDates(parseInt(props.match.params.id, 10))
 
 	const handleDate = (date: string | undefined) => {
 		return date?.split("").splice(0, 4)
@@ -17,19 +17,20 @@ const MoviePage: React.FC<OverviewProps> = props => {
 
 	let genres: string[] = []
 
-	const handleGenres = () => {
-		const newArr = movie?.genres.forEach(el => {
-			genres.push(el.name)
-		})
+	// const handleGenres = () => {
+	// 	const newArr = movie?.genres.forEach(el => {
+	// 		genres.push(el.name)
+	// 	})
 
-		return newArr
-	}
+	// 	return newArr
+	// }
 
-	handleGenres()
+	// handleGenres()
 
 	return (
 		<div className={styles["movie-page"]}>
-			<div
+			#
+			{/* <div
 				className={styles["header-container"]}
 				style={{
 					backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie?.backdrop_path})`,
@@ -102,9 +103,9 @@ const MoviePage: React.FC<OverviewProps> = props => {
 			</section>
 			<section>
 				<h2>Recommendations</h2>
-			</section>
+			</section> */}
 		</div>
 	)
 }
 
-export { MoviePage }
+export { Overview }

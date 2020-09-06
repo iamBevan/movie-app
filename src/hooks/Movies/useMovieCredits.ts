@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import { useEffect, useReducer } from 'react'
 import { Movies } from '../Search/interfaces'
-import { Cast } from '.././interfaces'
+import { Cast } from '../interfaces'
 
 const useMovie = (props: Movies | undefined) => {
     const results = props?.results
@@ -22,8 +22,7 @@ const useMovie = (props: Movies | undefined) => {
     useEffect(() => {
         for (let i = 0; i < 7; i++) {
             Axios.get(
-                `https://api.themoviedb.org/3/movie/${
-                    results && results[i]?.id
+                `https://api.themoviedb.org/3/movie/${results && results[i]?.id
                 }/credits?api_key=${process.env.REACT_APP_API_KEY}`
             )
                 .then((res) => {
@@ -34,7 +33,7 @@ const useMovie = (props: Movies | undefined) => {
                 })
         }
 
-        const cleanup = () => {}
+        const cleanup = () => { }
 
         return cleanup
     }, [props, results])

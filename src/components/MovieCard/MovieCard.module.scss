@@ -98,7 +98,8 @@
 					flex-grow: 1;
 				}
 				.ratings {
-					height: 75px;
+					height: 60px;
+					width: 100%;
 				}
 				.media {
 					height: 50px;
@@ -107,10 +108,10 @@
 					text-align: center;
 					.tv {
 						width: 50%;
-						background-color: orangered;
+						// background-color: orangered;
 					}
 					.movie {
-						background-color: red;
+						// background-color: red;
 						width: 50%;
 					}
 				}
