@@ -1,5 +1,5 @@
 import React from "react"
-import { Header } from "./components/Header/Header"
+import { Navigation } from "./components/Navigation/Navigation"
 import { Trending } from "./components/Trending/Trending"
 import { PopularList } from "./components/Popular/Popular"
 import { MoviePage } from "./pages/movie-page/MoviePage"
@@ -10,7 +10,7 @@ const App: React.FC = () => {
 	return (
 		<>
 			<Router>
-				<Header />
+				<Navigation />
 				<Switch>
 					<Route path='/movie/:id' component={MoviePage} />
 					<Route path='/tv/:id' component={TVPage} />

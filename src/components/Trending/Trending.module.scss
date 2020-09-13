@@ -1,33 +1,33 @@
-@import '../../sass/variables';
+@import "../../sass/variables";
 
 .trending {
-    width: 1200px;
-    margin: 0 auto;
+	width: 1200px;
+	margin: 0 auto;
 
-    h1 {
-        color: $primary-black;
-        font-weight: 300;
-    }
+	h1 {
+		color: $primary-black;
+		font-weight: 300;
+	}
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-row-gap: 0;
-    }
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+		grid-row-gap: 0;
+	}
 }
 
 @media screen and (max-width: 1200px) {
-    .trending {
-        width: 900px;
-    }
+	.trending {
+		width: 900px;
+	}
 }
 @media screen and (max-width: 900px) {
-    .trending {
-        width: 600px;
-    }
+	.trending {
+		width: 600px;
+	}
 }
 @media screen and (max-width: 600px) {
-    .trending {
-        width: 599px;
-    }
+	.trending {
+		width: 599px;
+	}
 }

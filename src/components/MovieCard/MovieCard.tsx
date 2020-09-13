@@ -7,6 +7,11 @@ import { useGenres } from "../../helpers/movieGenres"
 
 const MovieCard: React.FC<Movie> = props => {
 	useGenres(props.genre_ids)
+
+	const handleVoteAverage = (vote: string | undefined) => {
+		return vote ? parseInt(vote) * 10 : undefined
+	}
+
 	return (
 		<>
 			<Link
@@ -17,7 +22,7 @@ const MovieCard: React.FC<Movie> = props => {
 				<div className={styles["movie-card"]}>
 					<div className={styles["front"]}>
 						<img
-							style={{ width: "300px", height: "100%" }}
+							style={{ width: "185px", height: "100%" }}
 							src={
 								props.poster_path
 									? `https://image.tmdb.org/t/p/w500${props.poster_path}`
@@ -44,18 +49,23 @@ const MovieCard: React.FC<Movie> = props => {
 								/>
 							</div>
 							<div className={styles.info}>
-								<h2>
+								<span>
 									{props.title
 										? props.title
 										: props.original_title}
-								</h2>
+								</span>
 								<p>{props.release_date}</p>
-								<div className={styles.ratings}>
-									{useGenres(props.genre_ids)}
-								</div>
 								<div className={styles.media}>
 									<div className={styles.tv}>TV</div>
-									<div className={styles.movie}>Movie</div>
+									<div className={styles.movie}>
+										<div className={styles.rating}>
+											<RatingCircle
+												rating={handleVoteAverage(
+													props.vote_average
+												)}
+											/>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

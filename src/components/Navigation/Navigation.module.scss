@@ -1,0 +1,76 @@
+@import "../../sass/variables";
+
+nav {
+	padding: 16px 350px 0 350px;
+	height: 60px;
+	background-color: white;
+	color: black;
+	font-weight: 800;
+
+	-webkit-box-shadow: 0 4px 6px -6px #222;
+	-moz-box-shadow: 0 4px 6px -6px #222;
+	-webkit-box-shadow: 0px -9px 10px 8px rgba(0, 0, 0, 0.58);
+	box-shadow: 0px -9px 10px 8px rgba(0, 0, 0, 0.58);
+
+	.content {
+		display: flex;
+		justify-content: space-between;
+		width: 1200px;
+
+		.logo {
+			font-size: 28px;
+			font-weight: 900;
+
+			span {
+				color: orangered;
+			}
+		}
+
+		.menu {
+			display: flex;
+
+			div {
+				padding: 6px;
+				font-size: 18px;
+			}
+
+			.movies {
+			}
+
+			.tv {
+			}
+		}
+
+		.search {
+			background-color: lightsalmon;
+		}
+
+		.login {
+			display: flex;
+
+			div {
+				padding: 6px;
+				font-size: 18px;
+			}
+
+			.signIn {
+			}
+
+			.signUp {
+			}
+		}
+
+		.language {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			div {
+				padding: 3px;
+				border: 1px solid black;
+				border-radius: 3px;
+				color: white;
+				background-color: #222;
+			}
+		}
+	}
+}
