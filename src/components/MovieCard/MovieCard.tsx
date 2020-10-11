@@ -56,7 +56,11 @@ const MovieCard: React.FC<Movie> = props => {
 								</span>
 								<p>{props.release_date}</p>
 								<div className={styles.media}>
-									<div className={styles.tv}>TV</div>
+									<div className={styles.tv}>
+										{props.media_type === "tv"
+											? "TV"
+											: "Movie"}
+									</div>
 									<div className={styles.movie}>
 										<div className={styles.rating}>
 											<RatingCircle
