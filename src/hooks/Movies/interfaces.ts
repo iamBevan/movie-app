@@ -1,3 +1,8 @@
+export interface MovieGenre {
+    id: number
+    name: string
+}
+
 export interface MovieDetailsSpokenLanguages {
     iso_3166_1: string
     name: string

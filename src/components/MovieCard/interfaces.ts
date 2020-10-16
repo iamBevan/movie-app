@@ -13,4 +13,7 @@ export interface Movie {
     media_type?: string
     original_title?: string
     name?: string
+    genre_ids: number[]
+    first_air_date?: string
+    vote_average?: string;
 }

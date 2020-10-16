@@ -2,15 +2,27 @@ import React from "react"
 import styles from "./MovieCard.module.scss"
 import { Movie } from "./interfaces"
 import { Link } from "react-router-dom"
+import { RatingCircle } from "../RatingCircle/RatingCircle"
+import { useGenres } from "../../helpers/movieGenres"
 
 const MovieCard: React.FC<Movie> = props => {
+	useGenres(props.genre_ids)
+
+	const handleVoteAverage = (vote: string | undefined) => {
+		return vote ? parseInt(vote) * 10 : undefined
+	}
+
 	return (
 		<>
-			<Link to={`/movie/${props.id?.toString()}`}>
+			<Link
+				to={`/${
+					props.media_type === "tv" ? "tv" : "movie"
+				}/${props.id?.toString()}`}
+			>
 				<div className={styles["movie-card"]}>
 					<div className={styles["front"]}>
 						<img
-							style={{ width: "300px", height: "100%" }}
+							style={{ width: "185px", height: "100%" }}
 							src={
 								props.poster_path
 									? `https://image.tmdb.org/t/p/w500${props.poster_path}`
@@ -37,16 +49,27 @@ const MovieCard: React.FC<Movie> = props => {
 								/>
 							</div>
 							<div className={styles.info}>
-								<h2>
+								<span>
 									{props.title
 										? props.title
 										: props.original_title}
-								</h2>
+								</span>
 								<p>{props.release_date}</p>
-								<div className={styles.ratings}>Ratings</div>
 								<div className={styles.media}>
-									<div className={styles.tv}>TV</div>
-									<div className={styles.movie}>Movie</div>
+									<div className={styles.tv}>
+										{props.media_type === "tv"
+											? "TV"
+											: "Movie"}
+									</div>
+									<div className={styles.movie}>
+										<div className={styles.rating}>
+											<RatingCircle
+												rating={handleVoteAverage(
+													props.vote_average
+												)}
+											/>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
