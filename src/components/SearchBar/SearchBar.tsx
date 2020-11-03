@@ -1,15 +1,15 @@
-import React, { useRef } from "react"
-import styles from "./SearchBar.module.scss"
-import { useClickAway } from "react-use"
+import React, { useRef } from "react";
+import styles from "./SearchBar.module.scss";
+import { useClickAway } from "react-use";
 
 interface Props {
-	input: string
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-	onFocus: (event: React.FocusEvent<HTMLInputElement>) => void
-	isOpen: boolean
-	onSubmit: any
-	dropDownList: JSX.Element[] | undefined
-	toggle: () => void
+	input: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onFocus: (event: React.FocusEvent<HTMLInputElement>) => void;
+	isOpen: boolean;
+	onSubmit: any;
+	dropDownList: JSX.Element[] | undefined;
+	toggle: () => void;
 }
 
 const SearchBar: React.FC<Props> = ({
@@ -21,18 +21,17 @@ const SearchBar: React.FC<Props> = ({
 	dropDownList,
 	toggle,
 }) => {
-	const ref = useRef(null)
+	const ref = useRef(null);
 
 	useClickAway(ref, () => {
-		toggle()
-	})
+		toggle();
+	});
 
 	return (
 		<form onSubmit={onSubmit}>
 			<div className={styles.basicSearch}>
 				<div className={styles.inputField}>
 					<input
-						autoFocus
 						className={styles.input}
 						id='search'
 						type='text'
@@ -46,7 +45,7 @@ const SearchBar: React.FC<Props> = ({
 			</div>
 			<ul ref={ref}>{isOpen && dropDownList}</ul>
 		</form>
-	)
-}
+	);
+};
 
-export { SearchBar }
+export { SearchBar };

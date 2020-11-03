@@ -1,56 +1,59 @@
-import React from "react"
-import styles from "./Overview.module.scss"
-import { RouteComponentProps } from "react-router-dom"
-import { FaListUl, FaHeart, FaBookmark, FaStar } from "react-icons/fa"
+import React from "react";
+import styles from "./Overview.module.scss";
+import { RouteComponentProps } from "react-router-dom";
+import { FaListUl, FaHeart, FaBookmark, FaStar } from "react-icons/fa";
 import {
 	MovieDetailsProductionCompanies,
 	MovieDetailsProductionCountries,
 	MovieDetailsSpokenLanguages,
-} from "../hooks/Movies/interfaces"
-import { handleDate } from "../helpers/handleDates"
+} from "../hooks/Movies/interfaces";
+import { handleDate } from "../helpers/handleDates";
+import { CastSection } from "../components/CastSection/CastSection";
+import { CastData } from "../hooks/interfaces";
+import { useFetch } from "../hooks/useFetch";
 
 export interface OverviewProps extends RouteComponentProps<{ id: string }> {
-	adult?: boolean
-	backdrop_path: string | null | undefined
-	belongs_to_collection?: null | {}
-	budget?: number
-	genres: [{ id: number; name: string }] | undefined
-	homepage?: string | null
-	id?: number
-	imdb_id?: string | null // Validations:  minLength: 9, maxLength: 9, pattern:^tt[0-9]{7}
-	original_language?: string
-	original_title?: string
-	overview: string | null | undefined
-	popularity?: number
-	poster_path: string | null | undefined
-	production_companies?: MovieDetailsProductionCompanies[]
-	production_countries?: MovieDetailsProductionCountries[]
-	release_date: string | undefined // format Date
-	revenue?: number
-	runtime: number | undefined
-	spoken_languages?: MovieDetailsSpokenLanguages[]
-	status?: string // Allowed Values: Rumored, Planned, In Production, Post Production, Released, Cancelled
-	tagline: string | null | undefined
-	title: string | undefined
-	video?: boolean
-	vote_average?: number
-	vote_count?: number
+	adult?: boolean;
+	backdrop_path: string | null | undefined;
+	belongs_to_collection?: null | {};
+	budget?: number;
+	genres: [{ id: number; name: string }] | undefined;
+	homepage?: string | null;
+	id: number | undefined;
+	imdb_id?: string | null; // Validations:  minLength: 9, maxLength: 9, pattern:^tt[0-9]{7}
+	original_language?: string;
+	original_title?: string;
+	overview: string | null | undefined;
+	popularity?: number;
+	poster_path: string | null | undefined;
+	production_companies?: MovieDetailsProductionCompanies[];
+	production_countries?: MovieDetailsProductionCountries[];
+	release_date: string | undefined; // format Date
+	revenue?: number;
+	runtime: number | undefined;
+	spoken_languages?: MovieDetailsSpokenLanguages[];
+	status?: string; // Allowed Values: Rumored, Planned, In Production, Post Production, Released, Cancelled
+	tagline: string | null | undefined;
+	title: string | undefined;
+	video?: boolean;
+	vote_average?: number;
+	vote_count?: number;
 	results:
 		| [
 				{
-					iso_3166_1: string
+					iso_3166_1: string;
 					release_dates: [
 						{
-							certification: string
-							iso_639_1: string
-							release_date: string
-							type: number
-							note: string
+							certification: string;
+							iso_639_1: string;
+							release_date: string;
+							type: number;
+							note: string;
 						}
-					]
+					];
 				}
 		  ]
-		| undefined
+		| undefined;
 }
 
 const OverviewLayout: React.FC<OverviewProps> = ({
@@ -63,18 +66,23 @@ const OverviewLayout: React.FC<OverviewProps> = ({
 	backdrop_path,
 	overview,
 	genres,
+	id,
 }) => {
-	let genresArr: string[] = []
+	const cast = useFetch<CastData>(
+		`movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+	);
+
+	let genresArr: string[] = [];
 
 	const handleGenres = () => {
 		const newArr = genres?.forEach(el => {
-			genresArr.push(el.name)
-		})
+			genresArr.push(el.name);
+		});
 
-		return newArr
-	}
+		return newArr;
+	};
 
-	handleGenres()
+	handleGenres();
 	return (
 		<div className={styles["movie-page"]}>
 			<div
@@ -134,7 +142,12 @@ const OverviewLayout: React.FC<OverviewProps> = ({
 				</div>
 			</div>
 			<section>
-				<h2>Cast</h2>
+				<CastSection
+					cast={cast.data?.cast}
+					crew={cast.data?.crew}
+					id={cast.data?.id}
+				/>
+				'#'
 			</section>
 			<section>
 				<h2>Social</h2>
@@ -146,7 +159,7 @@ const OverviewLayout: React.FC<OverviewProps> = ({
 				<h2>Recommendations</h2>
 			</section>
 		</div>
-	)
-}
+	);
+};
 
-export { OverviewLayout }
+export { OverviewLayout };
