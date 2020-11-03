@@ -1,51 +1,58 @@
-import React, { useState, FormEvent } from "react"
-import styles from "./Search.module.scss"
-import { useDebounce } from "react-use"
-import { Movies, Results } from "../../hooks/Search/interfaces"
-import { useMovie } from "../../hooks/Movies/useMovieCredits"
-import { useSearch } from "../../hooks/Search/useSearch"
-import { Link } from "react-router-dom"
-import { SearchBar } from "../SearchBar/SearchBar"
+import React, { useState, FormEvent, useEffect } from "react";
+import styles from "./Search.module.scss";
+import { useDebounce } from "react-use";
+import { Movies, Results } from "../../hooks/Search/interfaces";
+import { useSearchResults } from "../../helpers/useSearchCredits";
+import { useSearch } from "../../hooks/Search/useSearch";
+import { Link } from "react-router-dom";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { ApiData } from "../../helpers/apiData";
 
 const Search = () => {
-	const [input, setInput] = useState("")
-	const [search, setSearch] = useState("")
-	const [isOpen, setIsOpen] = useState(false)
-	const moviesResults = useSearch(search)
-	const [state] = useMovie(moviesResults)
+	const [input, setInput] = useState("");
+	const [search, setSearch] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
+	const [moviesResults, setMoviesResults] = useState<Movies>();
+	const [state] = useSearchResults(moviesResults);
+
+	useEffect(() => {
+		const _trending = new ApiData(search);
+		_trending.getSearch().then(data => {
+			setMoviesResults(data);
+		});
+	}, [search]);
 
 	const toggleOpen = () => {
-		setIsOpen(false)
-	}
+		setIsOpen(false);
+	};
 
 	// eslint-disable-next-line no-empty-pattern
 	const [] = useDebounce(
 		() => {
-			setSearch(input)
-			setIsOpen(true)
+			setSearch(input);
+			setIsOpen(true);
 		},
 		500,
 		[input]
-	)
+	);
 
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		event.preventDefault()
-		setInput(event.target.value)
-	}
+		event.preventDefault();
+		setInput(event.target.value);
+	};
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault()
-		console.log("onSubmit")
+		event.preventDefault();
 		//Route to search results
-	}
+	};
 
 	const dropDownList = (movies: Movies | undefined) => {
-		let resultsArr = []
+		let resultsArr = [];
 		if (movies !== undefined) {
 			if (Object.keys(movies).length > 0) {
 				for (let i: number = 0; i < 7; i++) {
-					let entry = Object.values(movies)[3]
-					resultsArr.push(entry[i])
+					let entry = Object.values(movies)[3];
+					resultsArr.push(entry[i]);
 				}
 			}
 
@@ -70,10 +77,10 @@ const Search = () => {
 							</div>
 						</li>
 					</Link>
-				)
-			})
+				);
+			});
 		}
-	}
+	};
 
 	return (
 		<>
@@ -86,9 +93,8 @@ const Search = () => {
 				isOpen={isOpen}
 				toggle={toggleOpen}
 			/>
-			{console.log("dropdownlist", dropDownList(moviesResults))}
 		</>
-	)
-}
+	);
+};
 
-export { Search }
+export { Search };

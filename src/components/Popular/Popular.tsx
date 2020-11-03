@@ -1,40 +1,47 @@
-import React from 'react'
-import styles from './Popular.module.scss'
-import { usePopular } from '../../hooks/People/usePopular'
-import { PopularResults } from '../../hooks/interfaces'
-import { ProfileCard } from '../ProfileCard/ProfileCard'
+import React, { useEffect, useState } from "react";
+import styles from "./Popular.module.scss";
+import { Popular, PopularResults } from "../../hooks/interfaces";
+import { ProfileCard } from "../ProfileCard/ProfileCard";
+import { ApiData } from "../../helpers/apiData";
 
 const PopularList = () => {
-    const popular = usePopular()
+	const [popular, setPopular] = useState<Popular>();
 
-    const createPopularList = () => {
-        const popularList: PopularResults[] = []
-        if (popular?.results !== undefined) {
-            for (let i: number = 0; i < 6; i++) {
-                popularList.push(popular?.results[i])
-            }
-        }
-        return popularList
-    }
+	useEffect(() => {
+		const _popular = new ApiData();
+		_popular.getPopular().then(data => {
+			setPopular(data);
+		});
+	}, []);
 
-    return (
-        <div className={styles['popular']}>
-            <h1>Popular</h1>
-            <div className={styles['grid']}>
-                {createPopularList().map((el: PopularResults) => (
-                    <ProfileCard
-                        name={el.name}
-                        profile_path={el.profile_path}
-                        key={el.id}
-                        adult
-                        id={el.id}
-                        known_for={el.known_for}
-                        popularity={el.popularity}
-                    />
-                ))}
-            </div>
-        </div>
-    )
-}
+	const createPopularList = () => {
+		const popularList: PopularResults[] = [];
+		if (popular !== undefined) {
+			for (let i: number = 0; i < 6; i++) {
+				popularList.push(popular?.results[i]);
+			}
+		}
+		return popularList;
+	};
 
-export { PopularList }
+	return (
+		<div className={styles["popular"]}>
+			<h1>Popular</h1>
+			<div className={styles["grid"]}>
+				{createPopularList().map((el: PopularResults) => (
+					<ProfileCard
+						name={el.name}
+						profile_path={el.profile_path}
+						key={el.id}
+						adult
+						id={el.id}
+						known_for={el.known_for}
+						popularity={el.popularity}
+					/>
+				))}
+			</div>
+		</div>
+	);
+};
+
+export { PopularList };

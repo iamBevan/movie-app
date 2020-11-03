@@ -1,24 +1,29 @@
-import React from "react"
-import styles from "./Trending.module.scss"
-import { useTrending } from "../../hooks/Trending/useTrending"
-import { MovieCard } from "../MovieCard/MovieCard"
-import { Movie } from "../MovieCard/interfaces"
+import React, { useEffect, useState } from "react";
+import styles from "./Trending.module.scss";
+import { MovieCard } from "../MovieCard/MovieCard";
+import { Movie } from "../MovieCard/interfaces";
+import { TrendingMovies } from "./interfaces";
+import { ApiData } from "../../helpers/apiData";
 
 const Trending: React.FC = () => {
-	const trending = useTrending()
-	console.log({ trending })
+	const [trending, setTrending] = useState<TrendingMovies>();
+
+	useEffect(() => {
+		const _trending = new ApiData();
+		_trending.getTrending().then(data => {
+			setTrending(data);
+		});
+	}, []);
 
 	const createTrendingList = () => {
-		const trendingList: Movie[] = []
+		const trendingList: Movie[] = [];
 		if (trending?.results !== undefined) {
 			for (let i: number = 0; i < 6; i++) {
-				trendingList.push(trending?.results[i])
+				trendingList.push(trending?.results[i]);
 			}
 		}
-		return trendingList
-	}
-
-	console.log(trending)
+		return trendingList;
+	};
 
 	return (
 		<div className={styles["trending"]}>
@@ -26,7 +31,6 @@ const Trending: React.FC = () => {
 			<div className={styles["grid"]}>
 				{createTrendingList().map((movie: Movie) => (
 					<>
-						{console.log(movie.media_type)}
 						<MovieCard
 							title={movie.title}
 							poster_path={movie.poster_path}
@@ -45,7 +49,7 @@ const Trending: React.FC = () => {
 				))}
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export { Trending }
+export { Trending };
