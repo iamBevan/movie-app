@@ -3,10 +3,9 @@ import styles from "./Search.module.scss";
 import { useDebounce } from "react-use";
 import { Movies, Results } from "../../hooks/Search/interfaces";
 import { useSearchResults } from "../../helpers/useSearchCredits";
-import { useSearch } from "../../hooks/Search/useSearch";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { ApiData } from "../../helpers/apiData";
+import { apiData } from "../../helpers/apiData";
 
 const Search = () => {
 	const [input, setInput] = useState("");
@@ -16,8 +15,7 @@ const Search = () => {
 	const [state] = useSearchResults(moviesResults);
 
 	useEffect(() => {
-		const _trending = new ApiData(search);
-		_trending.getSearch().then(data => {
+		apiData.getSearch(search).then(data => {
 			setMoviesResults(data);
 		});
 	}, [search]);

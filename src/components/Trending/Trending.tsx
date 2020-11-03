@@ -3,14 +3,13 @@ import styles from "./Trending.module.scss";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { Movie } from "../MovieCard/interfaces";
 import { TrendingMovies } from "./interfaces";
-import { ApiData } from "../../helpers/apiData";
+import { apiData } from "../../helpers/apiData";
 
 const Trending: React.FC = () => {
 	const [trending, setTrending] = useState<TrendingMovies>();
 
 	useEffect(() => {
-		const _trending = new ApiData();
-		_trending.getTrending().then(data => {
+		apiData.getTrending().then(data => {
 			setTrending(data);
 		});
 	}, []);

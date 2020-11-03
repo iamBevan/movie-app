@@ -7,12 +7,11 @@ class ApiData {
 	private readonly apiUrl = `https://api.themoviedb.org/3/`;
 	private readonly apiKey = process.env.REACT_APP_API_KEY;
 	private axios: AxiosStatic;
-	private query?: string | undefined;
 
-	constructor(_query?: string) {
-		this.axios = axios;
-		this.query = _query;
+	constructor(ax: AxiosStatic) {
+		this.axios = ax;
 	}
+
 	public async getTrending() {
 		const response = await this.axios.get<TrendingMovies>(
 			`${this.apiUrl}trending/all/day?api_key=${this.apiKey}`
@@ -27,14 +26,14 @@ class ApiData {
 		return response.data;
 	}
 
-	public async getSearch() {
+	public async getSearch(query?: string) {
 		const response = await this.axios.get<Movies>(
-			`${this.apiUrl}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${this.query}`
+			`${this.apiUrl}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
 		);
 		return response.data;
 	}
 }
 
-// const data = new ApiData("");
+const apiData = new ApiData(axios);
 
-export { ApiData };
+export { apiData };

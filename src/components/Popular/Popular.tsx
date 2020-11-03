@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./Popular.module.scss";
 import { Popular, PopularResults } from "../../hooks/interfaces";
 import { ProfileCard } from "../ProfileCard/ProfileCard";
-import { ApiData } from "../../helpers/apiData";
+import { apiData } from "../../helpers/apiData";
 
 const PopularList = () => {
 	const [popular, setPopular] = useState<Popular>();
 
 	useEffect(() => {
-		const _popular = new ApiData();
-		_popular.getPopular().then(data => {
+		apiData.getPopular().then(data => {
 			setPopular(data);
 		});
 	}, []);
