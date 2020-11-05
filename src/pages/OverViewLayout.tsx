@@ -19,7 +19,7 @@ export interface OverviewProps extends RouteComponentProps<{ id: string }> {
 	budget?: number;
 	genres: [{ id: number; name: string }] | undefined;
 	homepage?: string | null;
-	id: number | undefined;
+	id: number;
 	imdb_id?: string | null; // Validations:  minLength: 9, maxLength: 9, pattern:^tt[0-9]{7}
 	original_language?: string;
 	original_title?: string;
@@ -145,7 +145,7 @@ const OverviewLayout: React.FC<OverviewProps> = ({
 				<CastSection
 					cast={cast.data?.cast}
 					crew={cast.data?.crew}
-					id={cast.data?.id}
+					id={cast.data?.id ? cast.data.id : 0}
 				/>
 				'#'
 			</section>

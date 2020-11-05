@@ -1,30 +1,40 @@
-import React from "react"
-import { useMovieDetails } from "../../hooks/Movies/useMovieDetails"
-import { RouteComponentProps } from "react-router-dom"
-import { useMovieReleaseDates } from "../../hooks/Movies/useMovieReleaseDates"
-import { OverviewLayout } from "../OverviewLayout"
+import React from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { OverviewLayout } from "../OverviewLayout";
+import { useFetch } from "../../hooks/useFetch";
+import { MovieDetails, MovieReleaseDates } from "../../hooks/Movies/interfaces";
 
 export interface OverviewProps extends RouteComponentProps<{ id: string }> {}
 
 const MoviePage: React.FC<OverviewProps> = props => {
-	const movie = useMovieDetails(parseInt(props.match.params.id, 10))
-	const movieCert = useMovieReleaseDates(parseInt(props.match.params.id, 10))
+	const movie = useFetch<MovieDetails>(
+		`movie/${parseInt(props.match.params.id, 10)}?api_key=${
+			process.env.REACT_APP_API_KEY
+		}&language=en-US`
+	).data;
 
-	let genres: string[] = []
+	const movieCert = useFetch<MovieReleaseDates>(
+		`movie/${parseInt(props.match.params.id, 10)}/release_dates?api_key=${
+			process.env.REACT_APP_API_KEY
+		}`
+	).data;
+
+	let genres: string[] = [];
 
 	const handleGenres = () => {
 		const newArr = movie?.genres.forEach(el => {
-			genres.push(el.name)
-		})
+			genres.push(el.name);
+		});
 
-		return newArr
-	}
+		return newArr;
+	};
 
-	handleGenres()
+	handleGenres();
 
 	return (
 		<>
 			<OverviewLayout
+				id={movie?.id ? movie?.id : 0}
 				history={props.history}
 				location={props.location}
 				match={props.match}
@@ -39,7 +49,7 @@ const MoviePage: React.FC<OverviewProps> = props => {
 				genres={movie?.genres}
 			/>
 		</>
-	)
-}
+	);
+};
 
-export { MoviePage }
+export { MoviePage };

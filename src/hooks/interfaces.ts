@@ -1,7 +1,7 @@
 export interface CastData {
 	cast: Cast[] | undefined;
 	crew: Crew[] | undefined;
-	id: number | undefined;
+	id: number;
 }
 
 export interface Cast {
@@ -37,11 +37,11 @@ export interface KnownFor {
 
 export interface PopularResults {
 	profile_path: string;
-	adult: boolean;
+	adult?: boolean;
 	id: number;
-	known_for: KnownFor;
+	known_for?: KnownFor;
 	name: string;
-	popularity: number;
+	popularity?: number;
 }
 
 export interface Popular {
