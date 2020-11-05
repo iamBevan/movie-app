@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Cast, CastData } from "../../hooks/interfaces";
 import { ProfileCard } from "../ProfileCard/ProfileCard";
 import styles from "./CastSection.module.scss";
