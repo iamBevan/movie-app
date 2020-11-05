@@ -1,12 +1,6 @@
 .cast {
 	width: 1200px;
 	margin: 0 auto;
-
-	h1 {
-		color: #fff;
-		font-weight: 300;
-	}
-
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));

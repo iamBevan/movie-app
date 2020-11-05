@@ -147,7 +147,6 @@ const OverviewLayout: React.FC<OverviewProps> = ({
 					crew={cast.data?.crew}
 					id={cast.data?.id ? cast.data.id : 0}
 				/>
-				'#'
 			</section>
 			<section>
 				<h2>Social</h2>
