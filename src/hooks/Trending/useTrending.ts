@@ -1,29 +1,27 @@
-import Axios from 'axios'
-import { useEffect, useState } from 'react'
-import { TrendingMovies } from '../../components/Trending/interfaces'
+import Axios from "axios";
+import { useEffect, useState } from "react";
+import { TrendingMovies } from "../../components/Trending/interfaces";
 
 const useTrending = () => {
-    const [trending, setTrending] = useState<TrendingMovies>()
+	const [trending, setTrending] = useState<TrendingMovies>();
 
-    useEffect(() => {
-        for (let i = 0; i < 7; i++) {
-            Axios.get(
-                `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
-            )
-                .then((res) => {
-                    setTrending(res.data)
-                })
-                .catch(() => {
-                    console.log('Error')
-                })
-        }
+	useEffect(() => {
+		Axios.get(
+			`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
+		)
+			.then(res => {
+				setTrending(res.data);
+			})
+			.catch(() => {
+				console.log("Error");
+			});
 
-        const cleanup = () => {}
+		const cleanup = () => {};
 
-        return cleanup
-    }, [])
+		return cleanup;
+	}, []);
 
-    return trending
-}
+	return trending;
+};
 
-export { useTrending }
+export { useTrending };

@@ -8,8 +8,8 @@ class ApiData {
 	private readonly apiKey = process.env.REACT_APP_API_KEY;
 	private axios: AxiosStatic;
 
-	constructor(ax: AxiosStatic) {
-		this.axios = ax;
+	constructor(_axios: AxiosStatic) {
+		this.axios = _axios;
 	}
 
 	public async getTrending() {
