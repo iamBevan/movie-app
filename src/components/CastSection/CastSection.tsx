@@ -17,7 +17,7 @@ const CastSection: React.FC<CastData> = ({ cast, id }) => {
 	const handleCast = () => {
 		return (
 			<div className={styles["cast"]}>
-				<h1>Cast</h1>
+				<h2>Cast</h2>
 				<div className={styles["grid"]}>
 					{cast &&
 						createCastList() &&
@@ -31,6 +31,7 @@ const CastSection: React.FC<CastData> = ({ cast, id }) => {
 							);
 						})}
 				</div>
+				<a href='_blank'>Full Cast & Crew</a>
 			</div>
 		);
 	};
